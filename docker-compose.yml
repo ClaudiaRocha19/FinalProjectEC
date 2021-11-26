@@ -1,0 +1,44 @@
+version: "3.3"
+services:
+  db:
+    build:
+      context: .
+      dockerfile: Dockerfile.postgres
+    container_name: postgresdb
+    environment:
+      - POSTGRES_USERNAME=postgres
+      - POSTGRES_PASSWORD=12345
+      - POSTGRES_DB=postgres
+    volumes:
+      - "./db:/var/lib/postgresql/data"
+    ports:
+      - "5433:5432"
+  dash:
+    build:
+      context: .
+      dockerfile: Dockerfile.dash
+    container_name: dash_app
+    volumes:
+      - ./dash:/code
+    command: "bash ./wait-for-it.sh db:5432 -- python app.py"
+    ports:
+      - "80:8080"
+    depends_on:
+        - db
+  jupyter:
+    build:
+      context: .
+      dockerfile: Dockerfile.notebook
+    container_name: notebook
+    environment:
+      - JUPYTER_TOKEN=password
+      - JUPYTER_ENABLE_LAB=yes
+    volumes:
+      - ./jupyter:/home/jovyan/work
+    ports:
+      - "8888:8888"
+    depends_on:
+      - db
+        
+
+    

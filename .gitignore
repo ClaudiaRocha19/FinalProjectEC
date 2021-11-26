@@ -1,0 +1,5 @@
+# exclude everything
+db/*
+jupyter/*
+
+!jupyter/connection.ipynb
