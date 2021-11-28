@@ -1,7 +1,5 @@
-# Proyecto final PC2
+# Proyecto final PC2 Grupo 8
+Presentado por David Cabarique, Donny Escolar, Claudia Rocha
+## Anotaciones
 
-
-
-## Notes
-
-Cuando ingrese al jupyter notebook ya sea en play with docker o en entorno local le pedirá una contraseña, esta es "password" sin las comillas, una vez dentro vaya dentro del directorio work y ahí encontrara el archivo connection que contiene el código. Corra las celdas en orden para asegurar que las variables usadas en celdas posteriores existan
+Clave notebook jupyter: password
